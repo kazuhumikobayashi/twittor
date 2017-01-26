@@ -1,5 +1,5 @@
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import Integer, text, Timestamp
+from sqlalchemy.sql.sqltypes import Integer, String, Timestamp
 
 from flaskr import db
 
@@ -7,8 +7,8 @@ from flaskr import db
 class User(db.Model):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    user_name = Column(Text)
-	password = Column(Text)
+    user_name = Column(String(16))
+	password = Column(String(32))
 
     def __repr__(self):
         return '<User id={id} user_name={user_name} password={password}>'.format(
@@ -18,7 +18,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = Column(Integer, primary_key=True)
     post_user_id = Column(Integer)
-    context = Column(Text)
+    context = Column(String(128))
     post_date = Column(Timestamp)
 
     def __repr__(self):
