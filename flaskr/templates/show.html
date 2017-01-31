@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+	<form action="{{ url_for('post_content', user_id=user.id) }}" method=post>
+    <dl>
+      <dt>content:
+      <dd><input type="text" size="20" name=content>
+      <dd><input type="submit" value="post">
+    </dl>
+    
+	
+   <ul>
+   {% for post in posts %}
+   <li><h2>{{ post.post_user_id }}</h2>{{ post.content|safe }}
+   {% else %}
+     <li><em>Unbelievable.  No coment here so far</em>
+   {% endfor %}
+   </ul>
+   
+   
+   	<a href="{{ url_for('delete_user', user_id="1") }}">ユーザー削除</a>
+	
+   
+   
+{% endblock %}
